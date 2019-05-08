@@ -9,6 +9,67 @@
             font-family: Wendy One;
             text-shadow: 0 0 3px rgba(255, 255, 255, 0.5);
         }
+
+        i {
+         width: 0.5px;
+         height: 16px;
+         float: left;
+         /* margin-right: 8px; */
+         opacity: 0.7;
+       }
+       #area {
+    line-height: 12px;
+    width: 280px;
+    position: absolute;
+    z-index: 1000;
+    left: 10px;
+    bottom: 10px;
+    color: #a0a0a0;
+    font-family: Wendy One;
+    padding: 6px 8px;
+    background: #000000;
+    background: rgba(38, 38, 38, 0.5);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+  }
+  #area i {
+    width: 25px;
+    height: 16px;
+    float: left;
+    /* margin-right: 8px; */
+    opacity: 0.7;
+  }
+
+  #area p {
+    font-size: 12px;
+    line-height: 16px;
+    margin: 0;
+  }
+  a:link {
+  color: black;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:visited {
+  color: #FF6600;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:hover {
+  color: black;
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+a:active {
+  color: orange;
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+
     </style>
       <script src="https://unpkg.com/d3@5/dist/d3.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -19,6 +80,20 @@
 </head>
 
 <body>
+
+
+  <div id="area">
+    <h2> <a href="https://www.instagram.com/explore/tags/oregonstateuniversity/">#oregonstateuniversity</a></h2>
+    <h3>Hashtags Associated with <br><br> #oregonstateuniversity</h3>
+    <table>
+        <td>Popular (500+)</td>
+        <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+
+        <td>Average <br> (200+)</td>
+        <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+        <td>Less Popular (10+)</td>
+    </table>
+    </div>
 
 <div id="cloud"></div>
 <script>
@@ -55,7 +130,10 @@ Promise.all([
 ]).then(function(wordlist) {
 
 
-var  frequencyList = wordFrequency2(wordlist[0], 0);
+var frequencyList = wordFrequency2(wordlist[0], 10);
+
+for (var j = 0; j < colorscheme.length; j++) {
+  $("#area").append("<i style='background: " + colorscheme[j] + " ; opacity:0.9'></i>")};
 
 
   $("#cloud").jQCloud(frequencyList, {
@@ -67,7 +145,10 @@ var  frequencyList = wordFrequency2(wordlist[0], 0);
          from: 0.06,
          to: 0.01
      }
+
+
   });
+
 
 
 

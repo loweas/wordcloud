@@ -10,6 +10,65 @@
             font-family: Schoolbell;
             text-shadow: 0 0 3px black;
         }
+        i {
+         width: 0.5px;
+         height: 16px;
+         float: left;
+         /* margin-right: 8px; */
+         opacity: 0.7;
+       }
+       #area {
+    line-height: 12px;
+    width: 280px;
+    position: absolute;
+    z-index: 1000;
+    left: 10px;
+    bottom: 10px;
+    color: #a0a0a0;
+    font-family: Wendy One;
+    padding: 6px 8px;
+    background: #000000;
+    background: rgba(38, 38, 38, 0.5);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+  }
+  #area i {
+    width: 25px;
+    height: 16px;
+    float: left;
+    /* margin-right: 8px; */
+    opacity: 0.7;
+  }
+
+  #area p {
+    font-size: 12px;
+    line-height: 16px;
+    margin: 0;
+  }
+  a:link {
+  color: black;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:visited {
+  color: #FF6600;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:hover {
+  color: black;
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+a:active {
+  color: orange;
+  background-color: transparent;
+  text-decoration: underline;
+}
+
     </style>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -18,12 +77,26 @@
     <script src="https://d3js.org/d3.v5.min.js"></script>
     </head>
     <body>
+
+
+            <div id="area">
+              <h2> <a href="https://www.instagram.com/oregonstate/?hl=en">@Oregonstate</a></h2>
+              <h3>Hashtags Associated with <br><br> @oregonstate</h3>
+              <table>
+                  <td>Popular (150+)</td>
+                  <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+
+                  <td>Average <br>(50+)</td>
+                  <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                  <td>Less Popular (1+)</td>
+              </table>
+              </div>
       <div id="cloud"></div>
 <script>
 function wordFrequency(txt, freq) {
 
 	// a regular expression to define the symbols to seperate the words
-    var wordArray = txt.split(/[ .?!,*'"”“]/);
+    var wordArray = txt.split(/[,]/);
     //var wordArray = txt.split(" ");
     var newArray = [], filteredArray = [], wordObj;
 	// calculate the frequency of each unique terms from the text.
@@ -38,7 +111,7 @@ function wordFrequency(txt, freq) {
         }
     });
 
-    var words = ["oregonstateuniversity"];
+    var words = [""];
 
 	//disinclude the word larger than the lowerst frequency as well as not in the commonly used terms.
     newArray.filter(function(word){
@@ -57,6 +130,10 @@ $.getJSON("assets/oregonstate.json", function( data )  {
 
         texts += data[i].tags ;
     }
+
+    for (var j = 0; j < colorscheme.length; j++) {
+      $("#area").append("<i style='background: " + colorscheme[j] + " ; opacity:0.9'></i>")};
+
 
 var  frequencyList = wordFrequency(texts, 1);
     $("#cloud").jQCloud(frequencyList, {
