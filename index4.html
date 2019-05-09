@@ -39,8 +39,8 @@
  width: 300px;
  position: absolute;
  z-index: 1000;
- right: 10px;
- bottom: .001px;
+ left: 200px;
+ top: 100px;
  color: #a0a0a0;
  font-family: Wendy One;
  padding: 6px 8px;
@@ -58,7 +58,7 @@
 }
 
 #area p {
- font-size: 12px;
+ font-size: 16px;
  line-height: 16px;
  margin: 0;
 }
@@ -112,18 +112,10 @@ text-decoration: underline;
 		</div>
 	</div>
 </div>
-
-  <!-- <div id="area" >
-  <table>
-        <td>Popular </td>
-        <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-
-        <td>Average <br> </td>
-        <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-        <td>Less Popular </td>
-    </table>
-    </div>
- -->
+ <div id="area" >
+   <h5>Click on Bar (year) to see trending tags </h5>
+   <p>Dark Blue = Selected<br>Light Blue = Deselected</p>
+ </div>
 
 
 <script>
@@ -228,7 +220,7 @@ d3.csv('assets/hashtag.csv').then(function(data) {
 			return texts += (" " + d.tags);
 		});
 
-		frequencyList = wordFrequency(texts, 2);
+		frequencyList = wordFrequency(texts, 1);
 		$('#cloud').jQCloud('destroy');
 		$("#cloud").jQCloud(frequencyList, {
 			colors: colorscheme,
