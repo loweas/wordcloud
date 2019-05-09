@@ -128,11 +128,11 @@ function wordFrequency(txt, freq) {
 }
 colorscheme = chroma.scale('OrRd').colors(10).reverse(); //colorscheme = chroma.scale('OrRd').colors(5);
 
-d3.csv('assets/hashtags90.csv').then(function(data) {
+d3.csv('assets/hashtag.csv').then(function(data) {
     var texts = "";
     for(var i=0;i< data.length; i++){
 
-        texts += data[i].hashtags ;
+        texts += data[i].tags ;
 
     }
 
