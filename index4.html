@@ -18,7 +18,7 @@
 		h4 {
       color: orange;
 			font-family: Wendy One;
-      font-size: 30px;
+      font-size: 40px;
 
 		}
 		#cloud {
@@ -36,11 +36,11 @@
     }
     #area {
  line-height: 12px;
- width: 280px;
+ width: 300px;
  position: absolute;
  z-index: 1000;
- left: 10px;
- bottom: 10px;
+ right: 10px;
+ bottom: .001px;
  color: #a0a0a0;
  font-family: Wendy One;
  padding: 6px 8px;
@@ -113,7 +113,7 @@ text-decoration: underline;
 	</div>
 </div>
 
-  <div id="area">
+  <!-- <div id="area" >
   <table>
         <td>Popular </td>
         <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
@@ -123,7 +123,7 @@ text-decoration: underline;
         <td>Less Popular </td>
     </table>
     </div>
-
+ -->
 
 
 <script>
@@ -196,9 +196,9 @@ d3.csv('assets/hashtagscoordinated.csv').then(function(data) {
 
 	dc.renderAll();
 
-  for (var j = 0; j < colorscheme.length; j++) {
-    $("#area").append("<i style='background: " + colorscheme[j] + " ; opacity:0.9'></i>")};
-
+  // for (var j = 0; j < colorscheme.length; j++) {
+  //   $("#area").append("<i style='background: " + colorscheme[j] + " ; opacity:0.9'></i>")};
+  //
 
 	var texts = "";
 	everything.top(Infinity).filter(function(d) {
@@ -209,7 +209,6 @@ d3.csv('assets/hashtagscoordinated.csv').then(function(data) {
 	frequencyList = wordFrequency(texts, 0);
 
 	$("#cloud").jQCloud(frequencyList, {
-
 		colors: colorscheme,
 		autoResize: true,
 		delay: 5,
@@ -232,7 +231,6 @@ d3.csv('assets/hashtagscoordinated.csv').then(function(data) {
 		frequencyList = wordFrequency(texts, 2);
 		$('#cloud').jQCloud('destroy');
 		$("#cloud").jQCloud(frequencyList, {
-
 			colors: colorscheme,
 			autoResize: true,
 			// steps: 20,

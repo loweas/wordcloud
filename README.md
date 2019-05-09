@@ -52,3 +52,10 @@ You can also run and produce wordclouds in RStudio I used this site : [STHDA](ht
 ##### [#oregonstate-index3.html](https://github.com/loweas/wordcloud/index3.html)
 
 ![index3.png](img/index3.png)
+
+## Example 3 Coorinated View [#oregonstateuniversity](https://www.instagram.com/explore/tags/oregonstateuniversity/)
+
+For this coorinated view we can't use a computed file since we need to [crossfilter](https://square.github.io/crossfilter/) and bind it to the time the photo was posted. This again will take sometime to load even with only ~3,000!
+
+
+![indexcord.png](img/indexcord.png)
